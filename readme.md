@@ -3,7 +3,9 @@ This document contains all the information you need to get started with the code
 ## Getting started
 ### Prerequisites
 - To begin with the test you will need:
+	- Git
 	-  Visual Studio 2022
+- Start by cloning this repository and then open the solution in Visual Studio
 
 ### Code structure
 The code in this repository is a simple .NET Web API project. You will find the following parts within:
@@ -29,4 +31,5 @@ Your task is to implement the missing parts of the application. You will need to
 - Implement the controller actions for "GET" and "POST"
 	- GET should return all the items fetched from the external API
 	- POST should return the items selected (ids of the selected items are passed from the frontend)
-
+### Turning in the task
+When you are happy that you have solved the task, we ask you to create a public repository and push your code there, then share a link to that repository with us.
