@@ -1,30 +1,41 @@
-using Api.Domain;
-using Api.Models;
-using Microsoft.AspNetCore.Mvc;
+namespace Api.Controllers;
 
-namespace Api.Controllers
+[ApiController]
+[Route("items")]
+public class ItemsController : ControllerBase
 {
-    [ApiController]
-    [Route("items")]
-    public class ItemsController : ControllerBase
+    private readonly IItemsService _itemService;
+
+    public ItemsController(IItemsService itemService)
     {
+        _itemService = itemService;
+    }
 
-        public ItemsController()
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<ItemDto>>> Get()
+    {
+        try
         {
+            IEnumerable<ItemDto> items = await _itemService.GetItemsAsync();
+            return Ok(items);
         }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ItemDto>>> Get()
+        catch (Exception ex)
         {
-            // TODO: Return items fetched from external API
-            return Array.Empty<ItemDto>();
+            return BadRequest(ex.Message);
         }
+    }
 
-        [HttpPost]
-        public async Task<ActionResult<IEnumerable<ItemDto>>> Post([FromForm]string[] items)
+    [HttpPost]
+    public async Task<ActionResult<IEnumerable<ItemDto>>> Post([FromForm] string[] itemIds)
+    {
+        try
         {
-            // TODO: Return a list of the items selected based on the "items" array posted from the frontend
-            return Array.Empty<ItemDto>();
+        IEnumerable<ItemDto> selectedItems = await _itemService.PostItemsAsync(itemIds);
+        return Ok(selectedItems);
+        }
+        catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
     }
 }
