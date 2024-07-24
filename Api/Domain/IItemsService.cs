@@ -1,9 +1,7 @@
-﻿using Api.Models;
+﻿namespace Api.Domain;
 
-namespace Api.Domain
+public interface IItemsService
 {
-    public interface IItemsService
-    {
-        public Task<IEnumerable<ItemDto>> GetItems();
-    }
+    Task<IEnumerable<ItemDto>> GetItemsAsync();
+    Task<IEnumerable<ItemDto>> PostItemsAsync(string[] itemIds);
 }

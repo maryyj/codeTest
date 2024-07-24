@@ -6,7 +6,7 @@ const constructListComponent = async (root) => {
 
     const renderItem = (item) => `
         <li>
-            <input type="checkbox" name="items" id="${item.id}" value="${item.id}" />
+            <input type="checkbox" name="itemIds" id="${item.id}" value="${item.id}" />
             <label for="${item.id}">
                 <div>${item.name}</div>
                 <div>${item.description}</div>
